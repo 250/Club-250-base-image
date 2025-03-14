@@ -1,6 +1,9 @@
 # https://hub.docker.com/_/php/tags?name=-fpm-alpine
 FROM php:8.4.5-fpm-alpine AS prod
 
+# Validate PHP build is 64-bit.
+RUN sh -c "[[ $(php -r 'echo PHP_INT_SIZE;') = 8 ]]"
+
 RUN \
 	apk add icu icu-dev jemalloc libxslt libxslt-dev libffi libffi-dev libpq libpq-dev gmp gmp-dev \
 	&& docker-php-ext-install opcache \
