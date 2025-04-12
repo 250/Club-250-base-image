@@ -45,6 +45,9 @@ RUN \
 	&& apk del autoconf gcc libc-dev linux-headers make
 
 RUN <<-'.'
+	# Remove sticky bit from temp directory so users can share log files on fs.protected_regular systems.
+	chmod -t /tmp
+
 	>>/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini echo -n '
 		xdebug.mode=develop,debug,trace
 		xdebug.client_host=host.docker.internal
