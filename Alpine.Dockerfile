@@ -40,8 +40,8 @@ FROM prod AS dev
 
 RUN \
 	apk add autoconf gcc libc-dev linux-headers make \
-	&& pecl install xdebug \
-	&& docker-php-ext-enable xdebug \
+	&& pecl install xdebug pcov \
+	&& docker-php-ext-enable xdebug pcov \
 	&& apk del autoconf gcc libc-dev linux-headers make
 
 RUN <<-'.'
