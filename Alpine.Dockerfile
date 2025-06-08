@@ -40,7 +40,7 @@ FROM prod AS dev
 
 RUN \
 	apk add autoconf gcc libc-dev linux-headers make \
-	&& pecl install xdebug pcov \
+	&& pecl install xdebug-3.4.2 pcov \
 	&& docker-php-ext-enable xdebug pcov \
 	&& apk del autoconf gcc libc-dev linux-headers make
 
