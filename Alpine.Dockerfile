@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/php/tags?name=-fpm-alpine
-FROM php:8.4.8-fpm-alpine AS prod
+FROM php:8.4.10-fpm-alpine AS prod
 
 # Validate PHP build is 64-bit.
 RUN sh -c "[[ $(php -r 'echo PHP_INT_SIZE;') = 8 ]]"
