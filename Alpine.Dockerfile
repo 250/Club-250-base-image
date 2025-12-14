@@ -1,12 +1,12 @@
 # https://hub.docker.com/_/php/tags?name=-fpm-alpine
-FROM php:8.4.10-fpm-alpine AS prod
+FROM php:8.5.0-fpm-alpine AS prod
 
 # Validate PHP build is 64-bit.
 RUN sh -c "[[ $(php -r 'echo PHP_INT_SIZE;') = 8 ]]"
 
 RUN \
 	apk add icu icu-dev jemalloc libxslt libxslt-dev libffi libffi-dev libpq libpq-dev gmp gmp-dev \
-	&& docker-php-ext-install opcache \
+	&& docker-php-ext-install \
 		# Number formatting in our own application templates requires intl.
 		intl \
 		# symfony/messenger requires PCNTL for graceful shutdown of queue workers.

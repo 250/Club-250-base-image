@@ -1,9 +1,9 @@
 # https://hub.docker.com/_/php/tags
-FROM php:8.4.10-fpm AS prod
+FROM php:8.5.0-fpm AS prod
 
 RUN apt-get update && \
 	apt-get --assume-yes install libicu-dev libxslt1.1 libxslt1-dev libffi-dev libpq5 libpq-dev libgmp-dev unzip \
-	&& docker-php-ext-install opcache \
+	&& docker-php-ext-install \
 		# Number formatting in our own application templates requires intl.
 		intl \
 		# symfony/messenger requires PCNTL for graceful shutdown of queue workers.
