@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/php/tags
-FROM php:8.5.3-fpm AS prod
+FROM php:8.5.4-fpm AS prod
 
 RUN apt-get update && \
 	apt-get --assume-yes install libicu-dev libxslt1.1 libxslt1-dev libffi-dev libpq5 libpq-dev libgmp-dev unzip \
